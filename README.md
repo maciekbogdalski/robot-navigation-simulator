@@ -1,44 +1,54 @@
-Research Track Assignment 1 [12.11.2021] by Maciej Bogdalski
-================================
+# Robot Navigation Simulator
 
+This project showcases an autonomous robot simulation, where the robot is tasked with identifying and interacting with specific tokens in an environment while avoiding obstacles. The simulation demonstrates key concepts in robotics such as object detection, navigation, and decision-making.
 
-Installing and running
-----------------------
+## Features
 
-The simulator requires a Python 2.7 installation, the [pygame](http://pygame.org/) library, [PyPyBox2D](https://pypi.python.org/pypi/pypybox2d/2.1-r331), and [PyYAML](https://pypi.python.org/pypi/PyYAML/).
+- Autonomous navigation using object detection
+- Avoidance of obstacles while tracking and interacting with specific targets
+- Simple and effective decision-making algorithm to control robot behavior
 
-Run the program with:
+## Installation and Setup
 
-```bash
-$ python2 run.py mySolution.py
-```
+The simulator requires Python 2.7 and the following libraries:
 
+- [Pygame](http://pygame.org/)
+- [PyPyBox2D](https://pypi.python.org/pypi/pypybox2d/2.1-r331)
+- [PyYAML](https://pypi.python.org/pypi/PyYAML/)
 
-Description and pseudo-code
-----------------------
-
-The program is desired to make the robot spot the silver tokens, avoiding touching or moving the golden ones at the same time. Robot comes towards a silver token, grabs it, rotates 180 degress and drops it, then moves to the next marker. 
-In order to make the robot avoid golden markers, it scans its neighbourhood constantly and corrects its own movement. Its "unnatural" moves are caused by designing its scanner to scan in a certain radius, while the whole environment was designed using rather rectangular shapes. It fullfills its task however, without making mistakes. 
-
+To install the necessary libraries, use the following commands:
 
 ```bash
-simulation keeps executing:
-	scan the environment for silver and golden tokens - scan on the left and on the right
-	calculate the average distances for both sides
-	if the silver token is close enough:
-		move towards the silver token and grab it
-	elif average distance on the right > average distance on the left:
-		turn right 
-	elif  average distance on the left > average distance on the right:
-		turn left
-	drive
+pip install pygame pypybox2d pyyaml
+```
+## Running the Simulation
+
+To run the simulation, execute the following command:
+
+```bash
+python2 run.py mySolution.py
 ```
 
+## How It Works
+
+The robot's goal is to locate and interact with silver tokens while avoiding golden tokens in the environment. The robot navigates by scanning its surroundings, identifying the location of both silver and golden tokens, and making decisions based on the detected objects.
 
 
-The environment
-----------------------
+## Pseudo-code Overview
+
+```bash
+while simulation is running:
+    scan the environment for silver and golden tokens
+    calculate average distances to tokens on both sides
+    if a silver token is within a close range:
+        move towards and interact with the silver token
+    else if average distance to objects on the right > left:
+        turn right
+    else:
+        turn left
+    drive forward
+```
+## Environment
 
 ![image](https://user-images.githubusercontent.com/91498765/141461177-de0a459b-f97d-4fc5-b039-fb7d7638dcb8.png)
-
 
